@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace aStarLooksForKeys
 {
+    //
     class Map
     {
         public Node[,] nodes;
@@ -25,7 +26,8 @@ namespace aStarLooksForKeys
                 for(int j = 0; j < mapHeight; j++)
                 {
                     nodes[i, j] = new Node(MyType.walkable, "o");
-                   
+                    nodes[i, j].position = new Position(i, j);
+
                     if (i == 4 && j == 2)
                     {
                         nodes[i, j] = new Node(MyType.tower, "t");
