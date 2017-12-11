@@ -25,6 +25,7 @@ namespace aStarLooksForKeys
                 for(int j = 0; j < mapHeight; j++)
                 {
                     nodes[i, j] = new Node(MyType.walkable, "o");
+                    nodes[i, j].position = new Position(i, j);
 
                     if (i == 4 && j == 2)
                     {
