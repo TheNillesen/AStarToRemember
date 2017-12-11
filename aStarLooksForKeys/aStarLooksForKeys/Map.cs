@@ -20,10 +20,22 @@ namespace aStarLooksForKeys
         {
             for (int i = 0; i < mapWidth; i++)
             {
-                for(int j = 0; j < mapHeight; i++)
+                for(int j = 0; j < mapHeight; j++)
                 {
-                    Node[i, j] = new Node(MyType.walkable);
+                    nodes[i, j] = new Node(MyType.walkable, "o");
                 }
+            }
+        }
+
+        public void Render()
+        {
+            for (int i = 0; i < nodes.GetLength(0); i++)
+            {
+                for (int j = 0; j < nodes.GetLength(1); j++)
+                {
+                    Console.Write(nodes[i, j].symbole + " ");
+                }
+                Console.Write("\n");
             }
         }
     }

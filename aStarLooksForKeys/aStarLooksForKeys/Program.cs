@@ -8,8 +8,11 @@ namespace aStarLooksForKeys
 {
     class Program
     {
+        static private GameWorld gameWorld;
+
         static void Main(string[] args)
         {
+            gameWorld = new GameWorld();
         }
     }
 }

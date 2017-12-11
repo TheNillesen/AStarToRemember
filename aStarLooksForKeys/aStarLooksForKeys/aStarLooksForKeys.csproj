@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
+    <Compile Include="GameWorld.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="Program.cs" />

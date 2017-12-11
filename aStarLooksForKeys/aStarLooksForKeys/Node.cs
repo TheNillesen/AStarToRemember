@@ -10,11 +10,12 @@ namespace aStarLooksForKeys
     {
         public MyType myType;
 
-        public string symbol;
+        public string symbole;
 
-        public Node(MyType myType)
+        public Node(MyType myType, string symbole)
         {
             this.myType = myType;
+            this.symbole = symbole;
         }
 
 
