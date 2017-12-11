@@ -7,4 +7,6 @@ using System.Threading.Tasks;
 namespace aStarLooksForKeys
 {
     enum MyType { walkable, notWalkable, key, wizard, goal, tower, portal };
+    enum MyColor { Green, Grey, Gold, Red, Blue, DarkBlue };
+
 }
