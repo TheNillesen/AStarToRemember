@@ -8,5 +8,15 @@ namespace aStarLooksForKeys
 {
     class Node
     {
+        public MyType myType;
+
+        public string symbol;
+
+        public Node(MyType myType)
+        {
+            this.myType = myType;
+        }
+
+
     }
 }
