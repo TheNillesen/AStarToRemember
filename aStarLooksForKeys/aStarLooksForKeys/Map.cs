@@ -18,6 +18,7 @@ namespace aStarLooksForKeys
 
         private void GenerateMap(int mapWidth, int mapHeight)
         {
+            Random rnd = new Random();
             for (int i = 0; i < mapWidth; i++)
             {
                 for(int j = 0; j < mapHeight; j++)
@@ -63,7 +64,10 @@ namespace aStarLooksForKeys
                 }
             }
         }
+        private void PlaceKey()
+        {
 
+        }
         public void Render()
         {
             for (int i = 0; i < nodes.GetLength(0); i++)
