@@ -17,7 +17,7 @@ namespace aStarLooksForKeys
 
             open.Add(start);
 
-            //Finds the cell from the open list, which has the lowest f(x) value. This cell is moved to the closed list.
+            //Finds the cell from the open list, which has the lowest f(x) value. This cell is moved to the closed list..
             Node current = open[0];
 
             //Directional multiplicator.
