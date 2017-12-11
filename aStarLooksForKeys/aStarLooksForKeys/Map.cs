@@ -9,22 +9,23 @@ namespace aStarLooksForKeys
     class Map
     {
         public Node[,] nodes;
+        public List<Node> walkables; 
 
         public Map(int mapWidth, int mapHeight)
         {
+            walkables = new List<Node>();
             nodes = new Node[mapWidth, mapHeight];
             GenerateMap(mapWidth, mapHeight);
         }
 
         private void GenerateMap(int mapWidth, int mapHeight)
         {
-            Random rnd = new Random();
             for (int i = 0; i < mapWidth; i++)
             {
                 for(int j = 0; j < mapHeight; j++)
                 {
                     nodes[i, j] = new Node(MyType.walkable, "o");
-
+                   
                     if (i == 4 && j == 2)
                     {
                         nodes[i, j] = new Node(MyType.tower, "t");
@@ -45,14 +46,6 @@ namespace aStarLooksForKeys
                     {
                         nodes[i, j] = new Node(MyType.notWalkable, "v");
                     }
-                    if (i == 0 && j == 0)
-                    {
-                        nodes[i, j] = new Node(MyType.key, "k");
-                    }
-                    if (i == 9 && j == 9)
-                    {
-                        nodes[i, j] = new Node(MyType.key, "k");
-                    }
                     if (i == 7 && j == 8)
                     {
                         nodes[i, j] = new Node(MyType.tower, "i");
@@ -61,12 +54,23 @@ namespace aStarLooksForKeys
                     {
                         nodes[i, j] = new Node(MyType.wizard, "w");
                     }
+                    if (nodes[i, j].myType == MyType.walkable)
+                    {
+                        walkables.Add(nodes[i,j]);
+                        
+                    }
                 }
             }
+            PlaceKey();
+            PlaceKey();
         }
         private void PlaceKey()
         {
-
+            Random rnd = new Random();
+            int index = rnd.Next(walkables.Count);
+            walkables[index].myType = MyType.key;
+            walkables[index].symbole = "k";
+            walkables.RemoveAt(index);
         }
         public void Render()
         {
