@@ -23,6 +23,43 @@ namespace aStarLooksForKeys
                 for(int j = 0; j < mapHeight; j++)
                 {
                     nodes[i, j] = new Node(MyType.walkable, "o");
+
+                    if (i == 4 && j == 2)
+                    {
+                        nodes[i, j] = new Node(MyType.tower, "t");
+                    }
+                    if (i == 8 && j == 0)
+                    {
+                        nodes[i, j] = new Node(MyType.portal, "p");
+                    }
+                    if (j > 1 && j < 7 && i == 9)
+                    {
+                        nodes[i, j] = new Node(MyType.notWalkable, "T");
+                    }
+                    if (j > 1 && j < 7 && i == 7)
+                    {
+                        nodes[i, j] = new Node(MyType.notWalkable, "T");
+                    }
+                    if (i > 0 && i < 7 && j > 3 && j < 7)
+                    {
+                        nodes[i, j] = new Node(MyType.notWalkable, "v");
+                    }
+                    if (i == 0 && j == 0)
+                    {
+                        nodes[i, j] = new Node(MyType.key, "k");
+                    }
+                    if (i == 9 && j == 9)
+                    {
+                        nodes[i, j] = new Node(MyType.key, "k");
+                    }
+                    if (i == 7 && j == 8)
+                    {
+                        nodes[i, j] = new Node(MyType.tower, "i");
+                    }
+                    if (i == 8 && j == 1)
+                    {
+                        nodes[i, j] = new Node(MyType.wizard, "w");
+                    }
                 }
             }
         }
