@@ -124,7 +124,7 @@ namespace aStarLooksForKeys
 #if DEBUG
                 //Only for bug testing
                 Stopwatch stopwatch = Stopwatch.StartNew();
-                int millisecondsToWait = 100;
+                int millisecondsToWait = 500;
                 grid.Render();
                 while (true)
                 {
