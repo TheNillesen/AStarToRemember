@@ -177,7 +177,7 @@ namespace aStarLooksForKeys
 
 
         /// <summary>
-        /// Sorts the list after the cells F value.
+        /// Sorts the list after the cells F value..
         /// </summary>
         /// <param name="L"></param>
         static private void InsertionSort(ref List<Node> L)
