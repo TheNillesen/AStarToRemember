@@ -98,7 +98,7 @@ namespace aStarLooksForKeys
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.Write("\n");
-            }
+            }//cloningProblemer
         }
     }
 }
