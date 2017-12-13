@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace aStarLooksForKeys
 {
-    //
     class Map
     {
         public Node[,] nodes;
@@ -98,7 +97,7 @@ namespace aStarLooksForKeys
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.Write("\n");
-            }//cloningProblemer
+            }
         }
     }
 }
