@@ -17,6 +17,9 @@ namespace aStarLooksForKeys
 
         public GameWorld()
         {
+            Console.SetWindowSize(80, 21);
+
+            Console.Clear();
             Console.WriteLine("Welcome to the Algorithm Simulator 5000");
             Console.WriteLine("How will you proceed?");
             Console.WriteLine("Press 1 for: A*. Press 2 for something else");
@@ -42,11 +45,13 @@ namespace aStarLooksForKeys
 
                 Console.WriteLine("\nYour run of the Algorithm Simulator 5000 have concluded");
                 Console.WriteLine("How will you proceed?");
-                Console.WriteLine("Press 1 for: A*. Press 2 for something else");
+                Console.WriteLine("Press 1 for: A*. \nPress 2 for something else. \nPress 3 to exit game.");
 
                 ConsoleKeyInfo result = Console.ReadKey();
-                if ((result.Key == ConsoleKey.D1))
+                if (result.Key == ConsoleKey.D1)
                     gameRun = true;
+                if (result.Key == ConsoleKey.D3)
+                    return;
                 Console.Clear();
 
                 //New game
