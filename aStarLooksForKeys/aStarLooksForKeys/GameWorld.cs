@@ -8,8 +8,12 @@ namespace aStarLooksForKeys
 {
     class GameWorld
     {
-        public Map map;
         private Wizard wizard;
+        private bool run;
+
+        public Map map;
+        public bool gameRun;
+        
 
         public GameWorld()
         {
@@ -22,16 +26,28 @@ namespace aStarLooksForKeys
             map = new Map(10, 10);
             wizard = new Wizard(map.nodes[8, 1]);
             map.Render(false);
+            gameRun = true;
+            run = true;
             GameLoop();
         }
 
         private void GameLoop()
         {
-            bool run = true;
-
             while (run)
             {
-                wizard.Move(this);
+                while (gameRun)
+                {
+                    wizard.Move(this);
+                }
+
+                Console.WriteLine("\nYour run of the Algorithm Simulator 5000 have concluded");
+                Console.WriteLine("How will you proceed?");
+                Console.WriteLine("Press 1 for: A*. Press 2 for something else");
+
+                ConsoleKeyInfo result = Console.ReadKey();
+                if ((result.Key == ConsoleKey.D1))
+                    gameRun = true;
+                Console.Clear();
             }
         }
     }
