@@ -11,21 +11,7 @@ namespace aStarLooksForKeys
         public Map map;
         private Wizard wizard;
 
-        private static GameWorld instance;
-
-        public static GameWorld Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new GameWorld();
-                }
-                return instance;
-            }
-        }
-
-        private GameWorld()
+        public GameWorld()
         {
             map = new Map(10, 10);
             wizard = new Wizard(map.nodes[0, map.nodes.GetLength(1) - 1]);
@@ -38,7 +24,7 @@ namespace aStarLooksForKeys
             bool run = true;
             while (run)
             {
-                wizard.Move();
+                wizard.Move(this);
             }
         }
     }

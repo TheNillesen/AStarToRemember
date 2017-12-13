@@ -21,24 +21,24 @@ namespace aStarLooksForKeys
             path = new Queue<Node>();
         }
 
-        public void Move()
+        public void Move(GameWorld gameworld)
         {
             //Finds the destinations.
             if(destinations.Count() <= 0 || destinations == null)
             {
-                for(int x = 0; x < GameWorld.Instance.map.nodes.GetLength(0); x++)
+                for(int x = 0; x < gameworld.map.nodes.GetLength(0); x++)
                 {
-                    for (int y = 0; y < GameWorld.Instance.map.nodes.GetLength(1); y++)
+                    for (int y = 0; y < gameworld.map.nodes.GetLength(1); y++)
                     {
-                        if (GameWorld.Instance.map.nodes[x, y].myType == MyType.key || GameWorld.Instance.map.nodes[x, y].myType == MyType.tower || GameWorld.Instance.map.nodes[x, y].myType == MyType.goal)
-                            destinations.Add(GameWorld.Instance.map.nodes[x, y]);
+                        if (gameworld.map.nodes[x, y].myType == MyType.key || gameworld.map.nodes[x, y].myType == MyType.tower || gameworld.map.nodes[x, y].myType == MyType.goal)
+                            destinations.Add(gameworld.map.nodes[x, y]);
                     }
                 }
             }
 
             //Finds the path.
             if (path.Count() <= 0 || path == null)
-                path = Pathfinding.AStarQueue(GameWorld.Instance.map.nodes[current.position.X, current.position.Y], destinations[0], ref GameWorld.Instance.map);
+                path = Pathfinding.AStarQueue(gameworld.map.nodes[current.position.X, current.position.Y], destinations[0], ref gameworld.map);
 
             //Moves to the next position.
             WriteAt(current.position.X, current.position.Y, current.symbole);
