@@ -46,6 +46,13 @@ namespace aStarLooksForKeys
             //Sets the current destination.
             if (currentDes == null)
             {
+                //Stops the game if there is no more destinations.
+                if (orderOfBuisness.Count() <= 0)
+                {
+                    gameworld.gameRun = false;
+                    return;
+                }
+
                 MyType temp = orderOfBuisness.Dequeue();
                
                 Node tempN = null;
