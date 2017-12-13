@@ -47,6 +47,7 @@ namespace aStarLooksForKeys
             if (currentDes == null)
             {
                 MyType temp = orderOfBuisness.Dequeue();
+               
                 Node tempN = null;
                 float dis = 10000;
                 foreach(Node node in destinations)
@@ -106,11 +107,12 @@ namespace aStarLooksForKeys
         }
         //private void Win()
         //{
-        //    if (true)
+        //    if ()
         //    {
 
         //    }
         //}
+
         /// <summary>
         /// Finds the destinations.
         /// </summary>
