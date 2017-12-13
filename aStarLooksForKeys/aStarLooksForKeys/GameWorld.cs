@@ -49,6 +49,11 @@ namespace aStarLooksForKeys
                 if ((result.Key == ConsoleKey.D1))
                     gameRun = true;
                 Console.Clear();
+
+                //New game
+                map = new Map(10, 10);
+                wizard = new Wizard(map.nodes[8, 1]);
+                map.Render(false);
             }
         }
     }
