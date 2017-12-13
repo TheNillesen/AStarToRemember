@@ -29,45 +29,45 @@ namespace aStarLooksForKeys
 
                     if (i == 4 && j == 2)
                     {
-                        nodes[i, j] = new Node(MyType.tower, "t");
+                        nodes[i, j].myType = MyType.tower;
+                        nodes[i, j].symbole = "t";
                         nodes[i, j].color = ConsoleColor.Yellow;
                     }
                     if (i == 8 && j == 0)
                     {
-                        nodes[i, j] = new Node(MyType.portal, "p");
+                        nodes[i, j].myType = MyType.portal;
+                        nodes[i, j].symbole = "p";
                         nodes[i, j].color = ConsoleColor.Blue;
                     }
                     if (j > 1 && j < 7 && i == 9)
                     {
-                        nodes[i, j] = new Node(MyType.notWalkable, "T");
+                        nodes[i, j].myType = MyType.notWalkable;
+                        nodes[i, j].symbole = "T";
                         nodes[i, j].color = ConsoleColor.DarkGreen;
                     }
                     if (j > 1 && j < 7 && i == 7)
                     {
-                        nodes[i, j] = new Node(MyType.notWalkable, "T");
+                        nodes[i, j].myType = MyType.notWalkable;
+                        nodes[i, j].symbole = "T";
                         nodes[i, j].color = ConsoleColor.DarkGreen;
                     }
                     if (i > 0 && i < 7 && j > 3 && j < 7)
                     {
-                        nodes[i, j] = new Node(MyType.notWalkable, "v");
+                        nodes[i, j].myType = MyType.notWalkable;
+                        nodes[i, j].symbole = "v";
                         nodes[i, j].color = ConsoleColor.Gray;
                     }
                     if (i == 7 && j == 8)
                     {
-                        nodes[i, j] = new Node(MyType.tower, "i");
+                        nodes[i, j].myType = MyType.tower;
+                        nodes[i, j].symbole = "i";
                         nodes[i, j].color = ConsoleColor.Cyan;
                     }
-                    //if (i == 8 && j == 1)
-                    //{
-                    //    nodes[i, j] = new Node(MyType.wizard, "w");
-                    //    nodes[i, j].color = ConsoleColor.DarkBlue;
-                    //}
                     if (nodes[i, j].myType == MyType.walkable)
                     {
                         walkables.Add(nodes[i,j]);
                         nodes[i, j].color = ConsoleColor.Green;
                     }
-                    nodes[i, j].position = new Position(i, j);
                 }
             }
             PlaceKey();
