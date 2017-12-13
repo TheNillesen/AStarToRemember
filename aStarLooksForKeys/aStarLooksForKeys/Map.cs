@@ -29,7 +29,7 @@ namespace aStarLooksForKeys
 
                     if (i == 4 && j == 2)
                     {
-                        nodes[i, j] = new Node(MyType.tower, "t");
+                        nodes[i, j] = new Node(MyType.walkable, "t");
                         nodes[i, j].color = ConsoleColor.Yellow;
                     }
                     if (i == 8 && j == 0)
