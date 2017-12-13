@@ -22,6 +22,7 @@ namespace aStarLooksForKeys
             firstTime = true;
             symbole = "W";
             this.current = StartNode;
+            StartNode.wizardHere = true;
             destinations = new Queue<Node>();
             path = new Queue<Node>();
         }
@@ -40,16 +41,16 @@ namespace aStarLooksForKeys
 
             //Finds the path.
             if (path.Count() <= 0 || path == null)
-                path = Pathfinding.AStarQueue(gameworld.map.nodes[current.position.X, current.position.Y], currentDes, ref gameworld.map);
+                path = Pathfinding.AStarQueue(current, currentDes, ref gameworld.map);
 
             //Moves to the next position.
-            WriteAt(current.position.X, current.position.Y, current.symbole);
+            current.wizardHere = false;
             current = path.Dequeue();
-            WriteAt(current.position.X, current.position.Y, symbole);
+            current.wizardHere = true;
             if (path.Count() <= 0)
                 currentDes = null;
 
-            //Only for bug testing
+            //Does so we wait before moving on, so the wizard moves at a slower pace
             Stopwatch stopwatch = Stopwatch.StartNew();
             int millisecondsToWait = 500;
             gameworld.map.Render();
@@ -62,12 +63,6 @@ namespace aStarLooksForKeys
                 }
                 Thread.Sleep(1); //so processor can rest for a while
             }
-        }
-
-        private void WriteAt(int x, int y, string s)
-        {
-            Console.SetCursorPosition(x, y);
-            Console.Write(s);
         }
 
         private void Destinations(GameWorld gameworld)

@@ -93,7 +93,10 @@ namespace aStarLooksForKeys
                 for (int j = 0; j < nodes.GetLength(1); j++)
                 {
                     Console.ForegroundColor = nodes[i, j].color;
-                    Console.Write(nodes[i, j].symbole + " ");
+                    if(nodes[i, j].wizardHere)
+                        Console.Write("W ");
+                    else
+                        Console.Write(nodes[i, j].symbole + " ");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.Write("\n");

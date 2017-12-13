@@ -151,7 +151,7 @@ namespace aStarLooksForKeys
                 if (current.parent == null)
                     break;
                 current = current.parent;
-                if (current.myType == MyType.wizard)
+                if (current.wizardHere)
                     break;
             }
             path.Reverse();

@@ -42,10 +42,13 @@ namespace aStarLooksForKeys
         /// </summary>
         public Node parent;
 
+        public bool wizardHere;
+
         public Node(MyType myType, string symbole)
         {
             this.myType = myType;
             this.symbole = symbole;
+            wizardHere = false;
         }
 
 
