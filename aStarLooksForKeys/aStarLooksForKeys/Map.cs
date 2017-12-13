@@ -29,7 +29,7 @@ namespace aStarLooksForKeys
 
                     if (i == 4 && j == 2)
                     {
-                        nodes[i, j].myType = MyType.tower;
+                        nodes[i, j].myType = MyType.stormTower;
                         nodes[i, j].symbole = "t";
                         nodes[i, j].color = ConsoleColor.Yellow;
                     }
@@ -59,7 +59,7 @@ namespace aStarLooksForKeys
                     }
                     if (i == 7 && j == 8)
                     {
-                        nodes[i, j].myType = MyType.tower;
+                        nodes[i, j].myType = MyType.iceTower;
                         nodes[i, j].symbole = "i";
                         nodes[i, j].color = ConsoleColor.Cyan;
                     }
