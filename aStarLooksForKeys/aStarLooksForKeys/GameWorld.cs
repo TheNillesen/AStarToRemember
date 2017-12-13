@@ -13,7 +13,7 @@ namespace aStarLooksForKeys
 
         public GameWorld()
         {
-            Console.WriteLine("Welcome to the Algorithm simulator 5000");
+            Console.WriteLine("Welcome to the Algorithm Simulator 5000");
             Console.WriteLine("How will you proceed?");
             Console.WriteLine("Press 1 for: A*. Press 2 for something else");
             Console.ReadKey();
