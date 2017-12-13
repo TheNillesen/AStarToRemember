@@ -20,7 +20,7 @@ namespace aStarLooksForKeys
             Console.Clear();
 
             map = new Map(10, 10);
-            wizard = new Wizard(map.nodes[0, map.nodes.GetLength(1) - 1]);
+            wizard = new Wizard(map.nodes[8, 1]);
             map.Render(false);
             GameLoop();
         }
