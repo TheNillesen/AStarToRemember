@@ -67,6 +67,7 @@ namespace aStarLooksForKeys
                         walkables.Add(nodes[i,j]);
                         nodes[i, j].color = ConsoleColor.Green;
                     }
+                    nodes[i, j].position = new Position(i, j);
                 }
             }
             PlaceKey();
