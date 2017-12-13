@@ -55,8 +55,6 @@ namespace aStarLooksForKeys
                         if (yCord >= grid.nodes.GetLength(1) - 1)
                             yCord = grid.nodes.GetLength(1) - 1;
 
-                        int a = grid.nodes.GetLength(0);
-
                         Node cellTemp = grid.nodes[xCord, yCord];
 
                         //If the cell is not walkable or is in the closed list, then it's ignored.
