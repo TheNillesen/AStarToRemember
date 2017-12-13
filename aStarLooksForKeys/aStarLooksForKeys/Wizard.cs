@@ -111,7 +111,13 @@ namespace aStarLooksForKeys
                 Thread.Sleep(1); //so processor can rest for a while
             }
         }
+        //private void Win()
+        //{
+        //    if (true)
+        //    {
 
+        //    }
+        //}
         /// <summary>
         /// Finds the destinations.
         /// </summary>
