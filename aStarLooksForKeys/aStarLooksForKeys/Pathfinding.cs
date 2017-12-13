@@ -37,7 +37,7 @@ namespace aStarLooksForKeys
                 closed.Add(current);
                 open.RemoveAt(0);
                 //Sets color
-                current.color = closedColor;
+                current.colorPathfinding = closedColor;
 
                 //Runs through all the surrounding cells.
                 for (int x = -1; x <= 1; x++)
@@ -50,10 +50,12 @@ namespace aStarLooksForKeys
                             xCord = 0;
                         if (yCord < 0)
                             yCord = 0;
-                        if (xCord >= grid.nodes.GetLength(0))
-                            xCord = 0;
-                        if (yCord >= grid.nodes.GetLength(1))
-                            yCord = 0;
+                        if (xCord >= grid.nodes.GetLength(0) - 1)
+                            xCord = grid.nodes.GetLength(0) - 1;
+                        if (yCord >= grid.nodes.GetLength(1) - 1)
+                            yCord = grid.nodes.GetLength(1) - 1;
+
+                        int a = grid.nodes.GetLength(0);
 
                         Node cellTemp = grid.nodes[xCord, yCord];
 
@@ -66,7 +68,7 @@ namespace aStarLooksForKeys
                                 open.Add(cellTemp);
 #if DEBUG
                                 //Sets the color
-                                cellTemp.color = openColor;
+                                cellTemp.colorPathfinding = openColor;
 #endif
                                 //The current cell is made the parent cell.
                                 cellTemp.parent = current;
@@ -109,7 +111,7 @@ namespace aStarLooksForKeys
 
 #if DEBUG
                                     //Sets the color
-                                    cellTemp.color = openColor;
+                                    cellTemp.colorPathfinding = openColor;
 #endif
                                     //The current cell is made the parent cell.
                                     cellTemp.parent = current;
@@ -125,7 +127,7 @@ namespace aStarLooksForKeys
                 //Only for bug testing
                 Stopwatch stopwatch = Stopwatch.StartNew();
                 int millisecondsToWait = 500;
-                grid.Render();
+                grid.Render(true);
                 while (true)
                 {
                     //some other processing to do STILL POSSIBLE
@@ -145,7 +147,7 @@ namespace aStarLooksForKeys
             {
 #if DEBUG
                 //Sets color
-                current.color = pathColor;
+                current.colorPathfinding = pathColor;
 #endif
                 path.Add(current);
                 if (current.parent == null)

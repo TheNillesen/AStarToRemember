@@ -85,16 +85,22 @@ namespace aStarLooksForKeys
         /// <summary>
         /// Clears and prints the map.
         /// </summary>
-        public void Render()
+        public void Render(bool findingPath)
         {
             Console.Clear();
             for (int i = 0; i < nodes.GetLength(0); i++)
             {
                 for (int j = 0; j < nodes.GetLength(1); j++)
                 {
-                    Console.ForegroundColor = nodes[i, j].color;
+                    if(findingPath && nodes[i, j].colorPathfinding != ConsoleColor.White)
+                        Console.ForegroundColor = nodes[i, j].colorPathfinding;
+                    else
+                        Console.ForegroundColor = nodes[i, j].color;
                     if(nodes[i, j].wizardHere)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
                         Console.Write("W ");
+                    }
                     else
                         Console.Write(nodes[i, j].symbole + " ");
                     Console.ForegroundColor = ConsoleColor.White;

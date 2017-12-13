@@ -21,7 +21,7 @@ namespace aStarLooksForKeys
 
             map = new Map(10, 10);
             wizard = new Wizard(map.nodes[0, map.nodes.GetLength(1) - 1]);
-            map.Render();
+            map.Render(false);
             GameLoop();
         }
 
