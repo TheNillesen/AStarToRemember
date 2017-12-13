@@ -27,9 +27,9 @@ namespace aStarLooksForKeys
             int cross = 14;
 
             //colors for the different cells, coorosponding to how the pathfinder looks at them
-            MyColor openColor = MyColor.Blue;
-            MyColor closedColor = MyColor.Red;
-            MyColor pathColor = MyColor.DarkBlue;
+            ConsoleColor openColor = ConsoleColor.Blue;
+            ConsoleColor closedColor = ConsoleColor.Red;
+            ConsoleColor pathColor = ConsoleColor.DarkBlue;
 
             while (open.Count() > 0 && (current = open[0]) != goal)
             {

@@ -10,7 +10,7 @@ namespace aStarLooksForKeys
     {
         public MyType myType;
         public string symbole;
-        public MyColor color;
+        public ConsoleColor color;
 
         /// <summary>
         /// The grid position of the cell
