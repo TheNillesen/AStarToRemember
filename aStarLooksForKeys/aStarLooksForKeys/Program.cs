@@ -12,7 +12,7 @@ namespace aStarLooksForKeys
 
         static void Main(string[] args)
         {
-            gameWorld = new GameWorld();
+            gameWorld = GameWorld.Instance;
         }
     }
 }
