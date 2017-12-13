@@ -12,10 +12,12 @@ namespace aStarLooksForKeys
     {
         private Node current;
         private Queue<Node> path;
-        private Queue<Node> destinations;
-        private Node currentDes;
+        private List<Node> destinations;
         private string symbole;
         private bool firstTime;
+        private Queue<MyType> orderOfBuisness;
+
+        public Node currentDes;
 
         public Wizard(Node StartNode)
         {
@@ -23,8 +25,14 @@ namespace aStarLooksForKeys
             symbole = "W";
             this.current = StartNode;
             current.wizardHere = true;
-            destinations = new Queue<Node>();
+            destinations = new List<Node>();
             path = new Queue<Node>();
+
+            orderOfBuisness = new Queue<MyType>();
+            orderOfBuisness.Enqueue(MyType.key);
+            orderOfBuisness.Enqueue(MyType.stormTower);
+            orderOfBuisness.Enqueue(MyType.key);
+            orderOfBuisness.Enqueue(MyType.iceTower);
         }
 
         public void Move(GameWorld gameworld)
@@ -37,7 +45,35 @@ namespace aStarLooksForKeys
             }
             //Sets the current destination.
             if (currentDes == null)
-                currentDes = destinations.Dequeue();
+            {
+                MyType temp = orderOfBuisness.Dequeue();
+                Node tempN = null;
+                float dis = 10000;
+                foreach(Node node in destinations)
+                {
+                    //If the next disstination is a key.
+                    if(temp == MyType.key && node.myType == MyType.key)
+                    {
+                        if(tempN == null)
+                        {
+                            tempN = node;
+                            dis = Distance(current.position, node.position);
+                        }
+                        else
+                        {
+                            if (dis > Distance(current.position, node.position))
+                                tempN = node;
+                        }
+                    }
+                    //If the next disstination is the stormtower.
+                    if (temp == MyType.stormTower && node.myType == MyType.stormTower)
+                        tempN = node;
+                    //If the next disstination is the icetower.
+                    if (temp == MyType.iceTower && node.myType == MyType.iceTower)
+                        tempN = node;
+                }
+                currentDes = tempN;
+            }
 
             //Finds the path.
             if (path.Count() <= 0 || path == null)
@@ -48,9 +84,9 @@ namespace aStarLooksForKeys
             }
 
             //Moves to the next position.
-            current.WizardHere = false;
+            current.SetWizardHere(false, this);
             current = path.Dequeue();
-            current.WizardHere = true;
+            current.SetWizardHere(true, this);
             if (path.Count() <= 0)
                 currentDes = null;
 
@@ -75,16 +111,26 @@ namespace aStarLooksForKeys
 
         //    }
         //}
+        /// <summary>
+        /// Finds the destinations.
+        /// </summary>
+        /// <param name="gameworld"></param>
         private void Destinations(GameWorld gameworld)
         {
             for (int x = 0; x < gameworld.map.nodes.GetLength(0); x++)
             {
                 for (int y = 0; y < gameworld.map.nodes.GetLength(1); y++)
                 {
-                    if (gameworld.map.nodes[x, y].myType == MyType.key || gameworld.map.nodes[x, y].myType == MyType.tower || gameworld.map.nodes[x, y].myType == MyType.goal)
-                        destinations.Enqueue(gameworld.map.nodes[x, y]);
+                    if (gameworld.map.nodes[x, y].myType == MyType.key || gameworld.map.nodes[x, y].myType == MyType.stormTower || gameworld.map.nodes[x, y].myType == MyType.iceTower || gameworld.map.nodes[x, y].myType == MyType.goal)
+                        destinations.Add(gameworld.map.nodes[x, y]);
                 }
             }
+        }
+
+        //Finds the distance between two positions.
+        private float Distance(Position a, Position b)
+        {
+            return (float)Math.Sqrt((a.X + b.X) * (a.X + b.X) + (a.Y + b.Y) * (a.Y + b.Y));
         }
     }
 }

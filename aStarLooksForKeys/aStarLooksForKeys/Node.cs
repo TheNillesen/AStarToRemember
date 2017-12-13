@@ -46,25 +46,33 @@ namespace aStarLooksForKeys
         public bool monsterHere;
         public bool wizardHere;
 
-        public bool WizardHere
-        {
-            get { return wizardHere; }
-            set
-            {
-                if (value == false)
-                {
-                    wizardHere = false;
-                    if (myType == MyType.monster)
-                    {
-                        monsterHere = true;
-                        symbole = "M";
-                        color = ConsoleColor.DarkRed;
-                    }
-                }
-                if (value == true)
-                    wizardHere = true;
-            }
-        }
+        //public bool WizardHere
+        //{
+        //    get { return wizardHere; }
+        //    set
+        //    {
+        //        if (value == false)
+        //        {
+        //            wizardHere = false;
+        //            if (myType == MyType.monster)
+        //            {
+        //                monsterHere = true;
+        //                symbole = "M";
+        //                color = ConsoleColor.DarkRed;
+        //            }
+        //            if (myType == MyType.key)
+        //            {
+        //                symbole = "o";
+        //                color = ConsoleColor.Green;
+        //                myType = MyType.walkable;
+        //            }
+        //        }
+        //        if (value == true)
+        //        {
+        //            wizardHere = true;
+        //        }
+        //    }
+        //}
 
         public Node(MyType myType, string symbole)
         {
@@ -74,6 +82,28 @@ namespace aStarLooksForKeys
             colorPathfinding = ConsoleColor.White;
         }
 
-
+        public void SetWizardHere(bool value, Wizard wizard)
+        {
+            if (value == false)
+            {
+                wizardHere = false;
+                if (myType == MyType.monster)
+                {
+                    monsterHere = true;
+                    symbole = "M";
+                    color = ConsoleColor.DarkRed;
+                }
+            }
+            if (value == true)
+            {
+                wizardHere = true;
+                if (myType == MyType.key && wizard.currentDes == this)
+                {
+                    symbole = "o";
+                    color = ConsoleColor.Green;
+                    myType = MyType.walkable;
+                }
+            }
+        }
     }
 }
