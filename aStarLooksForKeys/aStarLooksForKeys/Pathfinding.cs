@@ -118,7 +118,7 @@ namespace aStarLooksForKeys
                         }
                     }
                 }
-                //Sorts the open list so the cell with the largest F value is at index 0..
+                //Sorts the open list so the cell with the largest F value is at index 0.
                 InsertionSort(ref open);
 
 #if DEBUG
@@ -177,7 +177,7 @@ namespace aStarLooksForKeys
 
 
         /// <summary>
-        /// Sorts the list after the cells F value.
+        /// Sorts the list after the cells F value..
         /// </summary>
         /// <param name="L"></param>
         static private void InsertionSort(ref List<Node> L)
