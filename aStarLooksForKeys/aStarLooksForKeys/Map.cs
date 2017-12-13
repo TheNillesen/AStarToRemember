@@ -74,6 +74,7 @@ namespace aStarLooksForKeys
             walkables[index].symbole = "k";
             walkables.RemoveAt(index);
         }
+
         public void Render()
         {
             for (int i = 0; i < nodes.GetLength(0); i++)
