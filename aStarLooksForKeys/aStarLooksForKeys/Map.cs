@@ -25,8 +25,7 @@ namespace aStarLooksForKeys
                 for(int j = 0; j < mapHeight; j++)
                 {
                     nodes[i, j] = new Node(MyType.walkable, "o");
-                    nodes[i, j].position = new Position(i, j);
-
+                   
                     if (i == 4 && j == 2)
                     {
                         nodes[i, j] = new Node(MyType.walkable, "t");
@@ -71,7 +70,7 @@ namespace aStarLooksForKeys
                 }
             }
             PlaceKey();
-            PlaceKey();
+            
         }
         private void PlaceKey()
         {
@@ -81,6 +80,17 @@ namespace aStarLooksForKeys
             walkables[index].symbole = "k";
             walkables[index].color = ConsoleColor.DarkYellow;
             walkables.RemoveAt(index);
+
+            int index2 = rnd.Next(walkables.Count);
+            walkables[index2].myType = MyType.key;
+            walkables[index2].symbole = "k";
+            walkables[index2].color = ConsoleColor.DarkYellow;
+            walkables.RemoveAt(index2);
+
+            while (index2 == index)
+            {
+                index2 = rnd.Next(walkables.Count);
+            }
         }
 
         /// <summary>
