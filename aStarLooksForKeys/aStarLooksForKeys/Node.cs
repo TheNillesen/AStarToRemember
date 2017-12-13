@@ -11,6 +11,7 @@ namespace aStarLooksForKeys
         public MyType myType;
         public string symbole;
         public ConsoleColor color;
+        public ConsoleColor colorPathfinding;
 
         /// <summary>
         /// The grid position of the cell
@@ -49,6 +50,7 @@ namespace aStarLooksForKeys
             this.myType = myType;
             this.symbole = symbole;
             wizardHere = false;
+            colorPathfinding = ConsoleColor.White;
         }
 
 

@@ -22,7 +22,7 @@ namespace aStarLooksForKeys
             firstTime = true;
             symbole = "W";
             this.current = StartNode;
-            StartNode.wizardHere = true;
+            current.wizardHere = true;
             destinations = new Queue<Node>();
             path = new Queue<Node>();
         }
@@ -41,7 +41,11 @@ namespace aStarLooksForKeys
 
             //Finds the path.
             if (path.Count() <= 0 || path == null)
+            {
+                foreach (Node node in gameworld.map.nodes)
+                    node.colorPathfinding = ConsoleColor.White;
                 path = Pathfinding.AStarQueue(current, currentDes, ref gameworld.map);
+            }
 
             //Moves to the next position.
             current.wizardHere = false;
@@ -53,7 +57,7 @@ namespace aStarLooksForKeys
             //Does so we wait before moving on, so the wizard moves at a slower pace
             Stopwatch stopwatch = Stopwatch.StartNew();
             int millisecondsToWait = 500;
-            gameworld.map.Render();
+            gameworld.map.Render(false);
             while (true)
             {
                 //some other processing to do STILL POSSIBLE
