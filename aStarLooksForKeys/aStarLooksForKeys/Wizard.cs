@@ -48,9 +48,9 @@ namespace aStarLooksForKeys
             }
 
             //Moves to the next position.
-            current.wizardHere = false;
+            current.WizardHere = false;
             current = path.Dequeue();
-            current.wizardHere = true;
+            current.WizardHere = true;
             if (path.Count() <= 0)
                 currentDes = null;
 

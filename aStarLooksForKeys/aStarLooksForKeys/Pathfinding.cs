@@ -57,8 +57,8 @@ namespace aStarLooksForKeys
 
                         Node cellTemp = grid.nodes[xCord, yCord];
 
-                        //If the cell is not walkable or is in the closed list, then it's ignored..
-                        if (cellTemp.myType != MyType.notWalkable && !closed.Contains(cellTemp))
+                        //If the cell is not walkable or is in the closed list, then it's ignored.
+                        if (cellTemp.myType != MyType.notWalkable && !closed.Contains(cellTemp) && cellTemp.monsterHere != true)
                         {
                             //If the cell isn't in the open list, then it's added.
                             if (!open.Contains(cellTemp))

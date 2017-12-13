@@ -63,6 +63,12 @@ namespace aStarLooksForKeys
                         nodes[i, j].symbole = "i";
                         nodes[i, j].color = ConsoleColor.Cyan;
                     }
+                    if (i == 8 && j == 5)
+                    {
+                        nodes[i, j].myType = MyType.monster;
+                        nodes[i, j].symbole = "o";
+                        nodes[i, j].color = ConsoleColor.Green;
+                    }
                     if (nodes[i, j].myType == MyType.walkable)
                     {
                         walkables.Add(nodes[i,j]);
