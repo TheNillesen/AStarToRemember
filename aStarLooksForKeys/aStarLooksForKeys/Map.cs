@@ -8,6 +8,7 @@ namespace aStarLooksForKeys
 {
     class Map
     {
+        
         public Node[,] nodes;
         public List<Node> walkables; 
 

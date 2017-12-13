@@ -68,7 +68,13 @@ namespace aStarLooksForKeys
                 Thread.Sleep(1); //so processor can rest for a while
             }
         }
+        //private void Win()
+        //{
+        //    if (true)
+        //    {
 
+        //    }
+        //}
         private void Destinations(GameWorld gameworld)
         {
             for (int x = 0; x < gameworld.map.nodes.GetLength(0); x++)
