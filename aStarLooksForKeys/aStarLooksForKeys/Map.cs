@@ -82,8 +82,12 @@ namespace aStarLooksForKeys
             walkables.RemoveAt(index);
         }
 
+        /// <summary>
+        /// Clears and prints the map.
+        /// </summary>
         public void Render()
         {
+            Console.Clear();
             for (int i = 0; i < nodes.GetLength(0); i++)
             {
                 for (int j = 0; j < nodes.GetLength(1); j++)
