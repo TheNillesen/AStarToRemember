@@ -8,13 +8,27 @@ namespace aStarLooksForKeys
 {
     class GameWorld
     {
-        private Map map;
+        public Map map;
         private Wizard wizard;
+
+        private static GameWorld instance;
+
+        public static GameWorld Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GameWorld();
+                }
+                return instance;
+            }
+        }
 
         public GameWorld()
         {
             map = new Map(10, 10);
-            wizard = new Wizard(new Position(1, 1));
+            wizard = new Wizard(map.nodes[0, map.nodes.GetLength(1) - 1]);
             map.Render();
             GameLoop();
         }
@@ -24,7 +38,7 @@ namespace aStarLooksForKeys
             bool run = true;
             while (run)
             {
-
+                wizard.Move();
             }
         }
     }
