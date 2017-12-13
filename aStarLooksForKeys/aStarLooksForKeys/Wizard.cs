@@ -41,7 +41,11 @@ namespace aStarLooksForKeys
 
             //Finds the path.
             if (path.Count() <= 0 || path == null)
+            {
+                foreach (Node node in gameworld.map.nodes)
+                    node.colorPathfinding = ConsoleColor.White;
                 path = Pathfinding.AStarQueue(current, currentDes, ref gameworld.map);
+            }
 
             //Moves to the next position.
             current.wizardHere = false;
