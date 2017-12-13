@@ -43,7 +43,28 @@ namespace aStarLooksForKeys
         /// </summary>
         public Node parent;
 
+        public bool monsterHere;
         public bool wizardHere;
+
+        public bool WizardHere
+        {
+            get { return wizardHere; }
+            set
+            {
+                if (value == false)
+                {
+                    wizardHere = false;
+                    if (myType == MyType.monster)
+                    {
+                        monsterHere = true;
+                        symbole = "M";
+                        color = ConsoleColor.DarkRed;
+                    }
+                }
+                if (value == true)
+                    wizardHere = true;
+            }
+        }
 
         public Node(MyType myType, string symbole)
         {
