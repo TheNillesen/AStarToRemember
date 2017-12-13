@@ -147,8 +147,9 @@ namespace aStarLooksForKeys
                 //Sets color
                 current.color = pathColor;
 #endif
-
                 path.Add(current);
+                if (current.parent == null)
+                    break;
                 current = current.parent;
                 if (current.myType == MyType.wizard)
                     break;
