@@ -85,7 +85,7 @@ namespace aStarLooksForKeys
                                 cellTemp.gTemp = cellTemp.g * directionMulti;
 
                                 //H value is calculaed.
-                                cellTemp.h = CalcH(cellTemp.position, goal.position, linear, cross);
+                               // cellTemp.h = CalcH(cellTemp.position, goal.position, linear, cross);
                             }
                             else
                             {
@@ -105,7 +105,7 @@ namespace aStarLooksForKeys
                                     cellTemp.gTemp = cellTemp.g * directionMulti;
 
                                     //H value is calculaed.
-                                    cellTemp.h = CalcH(cellTemp.position, goal.position, linear, cross);
+                                   // cellTemp.h = CalcH(cellTemp.position, goal.position, linear, cross);
 
 #if DEBUG
                                     //Sets the color
