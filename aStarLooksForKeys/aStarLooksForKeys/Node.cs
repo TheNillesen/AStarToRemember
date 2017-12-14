@@ -11,6 +11,7 @@ namespace aStarLooksForKeys
         public MyType myType;
         public string symbole;
         public ConsoleColor color;
+        public ConsoleColor colorPathfinding;
 
         /// <summary>
         /// The grid position of the cell
@@ -42,12 +43,67 @@ namespace aStarLooksForKeys
         /// </summary>
         public Node parent;
 
+        public bool monsterHere;
+        public bool wizardHere;
+
+        //public bool WizardHere
+        //{
+        //    get { return wizardHere; }
+        //    set
+        //    {
+        //        if (value == false)
+        //        {
+        //            wizardHere = false;
+        //            if (myType == MyType.monster)
+        //            {
+        //                monsterHere = true;
+        //                symbole = "M";
+        //                color = ConsoleColor.DarkRed;
+        //            }
+        //            if (myType == MyType.key)
+        //            {
+        //                symbole = "o";
+        //                color = ConsoleColor.Green;
+        //                myType = MyType.walkable;
+        //            }
+        //        }
+        //        if (value == true)
+        //        {
+        //            wizardHere = true;
+        //        }
+        //    }
+        //}
+
         public Node(MyType myType, string symbole)
         {
             this.myType = myType;
             this.symbole = symbole;
+            wizardHere = false;
+            colorPathfinding = ConsoleColor.White;
         }
 
-
+        public void SetWizardHere(bool value, Wizard wizard)
+        {
+            if (value == false)
+            {
+                wizardHere = false;
+                if (myType == MyType.monster)
+                {
+                    monsterHere = true;
+                    symbole = "M";
+                    color = ConsoleColor.DarkRed;
+                }
+            }
+            if (value == true)
+            {
+                wizardHere = true;
+                if (myType == MyType.key && wizard.currentDes == this)
+                {
+                    symbole = "o";
+                    color = ConsoleColor.Green;
+                    myType = MyType.walkable;
+                }
+            }
+        }
     }
 }
