@@ -17,6 +17,9 @@ namespace aStarLooksForKeys
         private bool firstTime;
         private Queue<MyType> orderOfBuisness;
 
+        public bool aStar;
+        public bool dijkstra;
+
         public Node currentDes;
 
         public Wizard(Node StartNode)
@@ -69,7 +72,7 @@ namespace aStarLooksForKeys
                         }
                         else
                         {
-                            if (dis > Distance(current.position, node.position))
+                            if (dis < Distance(current.position, node.position))
                                 tempN = node;
                         }
                     }
@@ -88,7 +91,10 @@ namespace aStarLooksForKeys
             {
                 foreach (Node node in gameworld.map.nodes)
                     node.colorPathfinding = ConsoleColor.White;
-                path = Pathfinding.AStarQueue(current, currentDes, ref gameworld.map);
+                if(aStar)
+                    path = Pathfinding.AStarQueue(current, currentDes, ref gameworld.map);
+                if (dijkstra)
+                    path = Pathfinding.DijkstraQueue(current, currentDes, ref gameworld.map);
             }
 
             //Moves to the next position.
