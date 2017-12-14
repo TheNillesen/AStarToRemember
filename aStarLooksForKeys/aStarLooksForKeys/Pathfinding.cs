@@ -29,7 +29,7 @@ namespace aStarLooksForKeys
             //colors for the different cells, coorosponding to how the pathfinder looks at them
             ConsoleColor openColor = ConsoleColor.Blue;
             ConsoleColor closedColor = ConsoleColor.Red;
-            ConsoleColor pathColor = ConsoleColor.DarkBlue;
+            ConsoleColor pathColor = ConsoleColor.Gray;
 
             while (open.Count() > 0 && (current = open[0]) != goal)
             {
@@ -64,10 +64,10 @@ namespace aStarLooksForKeys
                             if (!open.Contains(cellTemp))
                             {
                                 open.Add(cellTemp);
-#if DEBUG
+
                                 //Sets the color
                                 cellTemp.colorPathfinding = openColor;
-#endif
+
                                 //The current cell is made the parent cell.
                                 cellTemp.parent = current;
 
@@ -107,10 +107,9 @@ namespace aStarLooksForKeys
                                     //H value is calculaed.
                                     cellTemp.h = CalcH(cellTemp.position, goal.position, linear, cross);
 
-#if DEBUG
                                     //Sets the color
                                     cellTemp.colorPathfinding = openColor;
-#endif
+
                                     //The current cell is made the parent cell.
                                     cellTemp.parent = current;
                                 }
@@ -121,21 +120,7 @@ namespace aStarLooksForKeys
                 //Sorts the open list so the cell with the largest F value is at index 0.
                 InsertionSort(ref open);
 
-#if DEBUG
-                //Only for bug testing
-                Stopwatch stopwatch = Stopwatch.StartNew();
-                int millisecondsToWait = 500;
-                grid.Render(true);
-                while (true)
-                {
-                    //some other processing to do STILL POSSIBLE
-                    if (stopwatch.ElapsedMilliseconds >= millisecondsToWait)
-                    {
-                        break;
-                    }
-                    Thread.Sleep(1); //so processor can rest for a while
-                }
-#endif
+                TimerPause(grid);
             }
 
             //Finds the path
@@ -143,10 +128,9 @@ namespace aStarLooksForKeys
             bool run = true;
             while (run)
             {
-#if DEBUG
                 //Sets color
                 current.colorPathfinding = pathColor;
-#endif
+
                 path.Add(current);
                 if (current.parent == null)
                     break;
@@ -154,6 +138,7 @@ namespace aStarLooksForKeys
                 if (current.wizardHere)
                     break;
             }
+            TimerPause(grid);
             path.Reverse();
             return path;
         }
@@ -382,6 +367,23 @@ namespace aStarLooksForKeys
                 hTemp += (diffTemp.Y - diffTemp.X) * linear;
             }
             return hTemp;
+        }
+
+        static public void TimerPause(Map grid)
+        {
+            //Pause
+            Stopwatch stopwatch = Stopwatch.StartNew();
+            int millisecondsToWait = 500;
+            grid.Render(true);
+            while (true)
+            {
+                //some other processing to do STILL POSSIBLE
+                if (stopwatch.ElapsedMilliseconds >= millisecondsToWait)
+                {
+                    break;
+                }
+                Thread.Sleep(1); //so processor can rest for a while
+            }
         }
     }
 }
