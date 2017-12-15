@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace aStarLooksForKeys
 {
-    //
     class Map
     {
+        
         public Node[,] nodes;
         public List<Node> walkables; 
 
@@ -30,38 +30,45 @@ namespace aStarLooksForKeys
 
                     if (i == 4 && j == 2)
                     {
-                        nodes[i, j] = new Node(MyType.tower, "t");
+                        nodes[i, j].myType = MyType.stormTower;
+                        nodes[i, j].symbole = "t";
                         nodes[i, j].color = ConsoleColor.Yellow;
                     }
                     if (i == 8 && j == 0)
                     {
-                        nodes[i, j] = new Node(MyType.portal, "p");
+                        nodes[i, j].myType = MyType.portal;
+                        nodes[i, j].symbole = "p";
                         nodes[i, j].color = ConsoleColor.Blue;
                     }
                     if (j > 1 && j < 7 && i == 9)
                     {
-                        nodes[i, j] = new Node(MyType.notWalkable, "T");
+                        nodes[i, j].myType = MyType.notWalkable;
+                        nodes[i, j].symbole = "T";
                         nodes[i, j].color = ConsoleColor.DarkGreen;
                     }
                     if (j > 1 && j < 7 && i == 7)
                     {
-                        nodes[i, j] = new Node(MyType.notWalkable, "T");
+                        nodes[i, j].myType = MyType.notWalkable;
+                        nodes[i, j].symbole = "T";
                         nodes[i, j].color = ConsoleColor.DarkGreen;
                     }
                     if (i > 0 && i < 7 && j > 3 && j < 7)
                     {
-                        nodes[i, j] = new Node(MyType.notWalkable, "v");
+                        nodes[i, j].myType = MyType.notWalkable;
+                        nodes[i, j].symbole = "v";
                         nodes[i, j].color = ConsoleColor.Gray;
                     }
                     if (i == 7 && j == 8)
                     {
-                        nodes[i, j] = new Node(MyType.tower, "i");
+                        nodes[i, j].myType = MyType.iceTower;
+                        nodes[i, j].symbole = "i";
                         nodes[i, j].color = ConsoleColor.Cyan;
                     }
-                    if (i == 8 && j == 1)
+                    if (i == 8 && j == 5)
                     {
-                        nodes[i, j] = new Node(MyType.wizard, "w");
-                        nodes[i, j].color = ConsoleColor.DarkBlue;
+                        nodes[i, j].myType = MyType.monster;
+                        nodes[i, j].symbole = "o";
+                        nodes[i, j].color = ConsoleColor.Green;
                     }
                     if (nodes[i, j].myType == MyType.walkable)
                     {
@@ -71,7 +78,7 @@ namespace aStarLooksForKeys
                 }
             }
             PlaceKey();
-            PlaceKey();
+            
         }
         private void PlaceKey()
         {
@@ -81,20 +88,44 @@ namespace aStarLooksForKeys
             walkables[index].symbole = "k";
             walkables[index].color = ConsoleColor.DarkYellow;
             walkables.RemoveAt(index);
+
+            int index2 = rnd.Next(walkables.Count);
+            walkables[index2].myType = MyType.key;
+            walkables[index2].symbole = "k";
+            walkables[index2].color = ConsoleColor.DarkYellow;
+            walkables.RemoveAt(index2);
+
+            while (index2 == index)
+            {
+                index2 = rnd.Next(walkables.Count);
+            }
         }
 
-        public void Render()
+        /// <summary>
+        /// Clears and prints the map.
+        /// </summary>
+        public void Render(bool findingPath)
         {
+            Console.Clear();
             for (int i = 0; i < nodes.GetLength(0); i++)
             {
                 for (int j = 0; j < nodes.GetLength(1); j++)
                 {
-                    Console.ForegroundColor = nodes[i, j].color;
-                    Console.Write(nodes[i, j].symbole + " ");
+                    if(findingPath && nodes[i, j].colorPathfinding != ConsoleColor.White)
+                        Console.ForegroundColor = nodes[i, j].colorPathfinding;
+                    else
+                        Console.ForegroundColor = nodes[i, j].color;
+                    if(nodes[i, j].wizardHere)
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkBlue;
+                        Console.Write("W ");
+                    }
+                    else
+                        Console.Write(nodes[i, j].symbole + " ");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
                 Console.Write("\n");
-            }//cloningProblemer
+            }
         }
     }
 }
